@@ -41,8 +41,15 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<!-- Katex -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  integrity="sha384-n8MVd8MsyK6urLwodqzHhICo6ubxeMwZrkE8UX0vm7uXpW6ubkeWH8B9E9S0AdYy"
+  crossorigin="anonymous"
+/>
+
+<title>{title}</title><meta name="title" content={title} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
