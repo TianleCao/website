@@ -56,6 +56,11 @@ article {
   }
 }
 
+/* Fix for KaTeX double-rendering/ghosting issue */
+.katex-mathml {
+  display: none;
+}
+
 .animate {
   @apply opacity-0 translate-y-3;
   @apply transition-all duration-700 ease-out;
