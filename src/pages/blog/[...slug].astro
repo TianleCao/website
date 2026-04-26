@@ -8,8 +8,8 @@ import BackToPrev from "@components/BackToPrev.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
-    .filter(post => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    .filter(post => post.data.title && post.data.date && !post.data.draft)
+    .sort((a, b) => b.data.date!.valueOf() - a.data.date!.valueOf());
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
