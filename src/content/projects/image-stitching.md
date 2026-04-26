@@ -13,3 +13,9 @@ A modular Python framework for registering, warping, and blending multiple image
 - **Advanced Warping:** Support for both Planar and Cylindrical projections to handle wide-angle views.
 - **Seamless Blending:** Implementation of multi-band blending (Laplacian Pyramids) to eliminate visible seams.
 - **Modular Design:** Factory-based architecture for easy extension to new stitching strategies.
+
+<br />
+
+> [!TIP]
+> **Technical Deep Dive:** For a full explanation of the math behind this project, including Homography proofs and Laplacian blending, check out my [**Step-by-Step Tutorial →**](/blog/image-stitching/docs/tutorial)
+
