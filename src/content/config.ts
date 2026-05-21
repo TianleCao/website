@@ -44,6 +44,7 @@ const honors = defineCollection({
     title: z.string(),
     issuer: z.string(),
     date: z.coerce.date(),
+    url: z.string().optional(),
   }),
 });
 

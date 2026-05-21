@@ -155,7 +155,13 @@ const honors = (await getCollection("honors"))
                 {entry.data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" })}
               </div>
               <div class="font-semibold text-black dark:text-white">
-                {entry.data.title}
+                {entry.data.url ? (
+                  <Link href={entry.data.url} external underline={false}>
+                    {entry.data.title}
+                  </Link>
+                ) : (
+                  entry.data.title
+                )}
               </div>
               <div class="text-base opacity-75">
                 {entry.data.issuer}
