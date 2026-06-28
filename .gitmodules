@@ -1,3 +1,6 @@
 [submodule "src/content/blog/image-stitching"]
 	path = src/content/blog/image-stitching
 	url = https://github.com/TianleCao/image_stitching.git
+[submodule "src/content/blog/3dgs-pytorch"]
+	path = src/content/blog/3dgs-pytorch
+	url = https://github.com/TianleCao/3dgs-pytorch.git
