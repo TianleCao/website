@@ -29,16 +29,20 @@ export const PROJECTS: Metadata = {
 };
 
 export const SOCIALS: Socials = [
-  { 
+  {
+    NAME: "GitHub",
+    HREF: "https://github.com/TianleCao",
+  },
+  {
     NAME: "LinkedIn",
     HREF: "https://www.linkedin.com/in/tianle-cao-8802ab215/",
   },
-  { 
+  {
     NAME: "Google Scholar",
     HREF: "https://scholar.google.com/citations?user=dOHZdpgAAAAJ&hl=en",
   },
-  { 
+  {
     NAME: "ORCID",
     HREF: "https://orcid.org/0000-0003-3739-3103",
-  }
+  },
 ];
