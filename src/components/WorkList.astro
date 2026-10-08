@@ -1,0 +1,65 @@
+---
+import { dateRange } from "@lib/utils";
+
+type Role = {
+  data: {
+    role: string;
+    dateStart: Date;
+    dateEnd: Date | string;
+  };
+  Content: any;
+};
+
+type Props = {
+  groups: {
+    company: string;
+    dateStart: Date;
+    dateEnd: Date | string;
+    roles: Role[];
+  }[];
+  animate?: boolean;
+};
+
+const { groups, animate = false } = Astro.props;
+---
+
+<ul class="flex flex-col space-y-4">
+  {groups.map(group => (
+    <li class:list={[animate && "animate"]}>
+      <div class="text-base opacity-75">
+        {dateRange(group.dateStart, group.dateEnd)}
+      </div>
+      <div class="font-semibold text-black dark:text-white">
+        {group.company}
+      </div>
+      {group.roles.length === 1 ? (
+        group.roles.map(role => (
+          <>
+            <div class="text-base opacity-75">
+              {role.data.role}
+            </div>
+            <article>
+              <role.Content />
+            </article>
+          </>
+        ))
+      ) : (
+        <ul class="mt-2 flex flex-col space-y-3 pl-4 border-l border-black/10 dark:border-white/10">
+          {group.roles.map(role => (
+            <li>
+              <div class="text-base opacity-75">
+                {dateRange(role.data.dateStart, role.data.dateEnd)}
+              </div>
+              <div class="text-base text-black dark:text-white">
+                {role.data.role}
+              </div>
+              <article>
+                <role.Content />
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  ))}
+</ul>

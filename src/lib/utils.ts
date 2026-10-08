@@ -20,6 +20,39 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
+type WorkLike = {
+  data: {
+    company: string;
+    dateStart: Date;
+    dateEnd: Date | string;
+  };
+};
+
+/**
+ * Collapses consecutive roles at the same company into one group, so a
+ * promotion shows up as a second role under a single company heading.
+ * Expects entries already sorted newest first.
+ */
+export function groupWorkByCompany<T extends WorkLike>(entries: T[]) {
+  const groups: { company: string; roles: T[] }[] = [];
+
+  for (const entry of entries) {
+    const current = groups.at(-1);
+    if (current && current.company === entry.data.company) {
+      current.roles.push(entry);
+    } else {
+      groups.push({ company: entry.data.company, roles: [entry] });
+    }
+  }
+
+  return groups.map(group => ({
+    company: group.company,
+    dateStart: group.roles[group.roles.length - 1].data.dateStart,
+    dateEnd: group.roles[0].data.dateEnd,
+    roles: group.roles,
+  }));
+}
+
 export function dateRange(startDate: Date, endDate?: Date | string): string {
   const startMonth = startDate.toLocaleString("default", { month: "short" });
   const startYear = startDate.getFullYear().toString();
